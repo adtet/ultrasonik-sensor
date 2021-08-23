@@ -52,19 +52,22 @@ if __name__ == '__main__':
             dist = distance()
             print(dist)
             if dist<6:
-                id,text = reader.read()
-                print(id)
-                print(text)
-                servo.start(0)
-                time.sleep(0.5)
-                servo.ChangeDutyCycle(7)
-                time.sleep(0.5)
+                try:     
+                    id,text = reader.read()
+                    print(id)
+                    print(text)
+                    servo.start(0)
+                    time.sleep(0.5)
+                    servo.ChangeDutyCycle(7)
+                    time.sleep(0.5)
+                finally:
+                    time.sleep(5)
+                    servo.ChangeDutyCycle(2)
+                    time.sleep(1)
+                    servo.ChangeDutyCycle(0)
+                    servo.stop()
             else:
-                time.sleep(5)
-                servo.ChangeDutyCycle(2)
-                time.sleep(1)
-                servo.ChangeDutyCycle(0)
-                servo.stop()
+                print("On")
                                  
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:
