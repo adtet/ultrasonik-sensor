@@ -45,10 +45,11 @@ def distance():
     return distance
  
 if __name__ == '__main__':
-    reader = SimpleMFRC522()
+    
     try:
         
         while True:
+            reader = SimpleMFRC522()
             dist = distance()
             print(dist)
             servo.start(0)
