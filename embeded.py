@@ -54,7 +54,8 @@ if __name__ == '__main__':
             servo.start(0)
             time.sleep(0.5)
             if dist<6:
-                try:     
+                try:
+                    print("Letakkan kartu :")     
                     id,text = reader.read()
                     print(id)
                     print(text)
@@ -65,11 +66,12 @@ if __name__ == '__main__':
                     servo.ChangeDutyCycle(2)
                     time.sleep(1)
                     servo.ChangeDutyCycle(0)
-                    servo.stop()
+                    
             else:
                 print("On")
                                  
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:
         print("Measurement stopped by User")
+        servo.stop()
         GPIO.cleanup()
