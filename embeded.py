@@ -51,13 +51,13 @@ if __name__ == '__main__':
         while True:
             dist = distance()
             print(dist)
+            servo.start(0)
+            time.sleep(0.5)
             if dist<6:
                 try:     
                     id,text = reader.read()
                     print(id)
                     print(text)
-                    servo.start(0)
-                    time.sleep(0.5)
                     servo.ChangeDutyCycle(7)
                     time.sleep(0.5)
                 finally:
