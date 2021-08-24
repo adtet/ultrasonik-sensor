@@ -47,30 +47,28 @@ def distance():
 if __name__ == '__main__':
     
     try:
-        
         while True:
-            reader = SimpleMFRC522()
-            dist = distance()
-            print(dist)
             servo.start(0)
             time.sleep(0.5)
-            if dist<6:
-                try:
-                    print("Letakkan kartu :")     
-                    id,text = reader.read()
-                    print(id)
-                    print(text)
-                    servo.ChangeDutyCycle(7)
-                    time.sleep(0.5)
-                finally:
-                    time.sleep(5)
-                    servo.ChangeDutyCycle(2)
-                    time.sleep(1)
-                    servo.ChangeDutyCycle(0)
-                    
-            else:
-                print("On")
-                                 
+            set = False
+            while set==False:
+                reader = SimpleMFRC522()
+                print("Letakkan kartu :")     
+                id,text = reader.read()
+                print(id)
+                print(text)
+                if id:
+                    set = True
+            servo.ChangeDutyCycle(7)
+            time.sleep(0.5)
+            test = False            
+            while test==False:
+                dist = distance()
+                if dist>6:
+                    test = True
+            servo.ChangeDutyCycle(2)
+            time.sleep(3)
+            servo.ChangeDutyCycle(0)                   
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:
         print("Measurement stopped by User")
