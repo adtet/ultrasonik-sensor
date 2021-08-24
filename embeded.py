@@ -67,6 +67,7 @@ if __name__ == '__main__':
                 print(dist)
                 if dist>6:
                     test = True
+            time.sleep(5)        
             servo.ChangeDutyCycle(2)
             time.sleep(3)
             servo.ChangeDutyCycle(0)                   
