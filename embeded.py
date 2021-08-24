@@ -59,18 +59,20 @@ if __name__ == '__main__':
                 print(text)
                 if id:
                     set = True
-            test = False            
+            test = False
+            servo.ChangeDutyCycle(7)
+            status=True            
             while test==False:
-                servo.ChangeDutyCycle(7)
                 time.sleep(0.5)
                 dist = distance()
                 print(dist)
-                if dist>6:
+                if dist<6:
                     test = True
-            time.sleep(5)        
-            servo.ChangeDutyCycle(2)
-            time.sleep(3)
-            servo.ChangeDutyCycle(0)                   
+            if status==True and test==True:
+                time.sleep(5)        
+                servo.ChangeDutyCycle(2)
+                time.sleep(3)
+                servo.ChangeDutyCycle(0)                   
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:
         print("Measurement stopped by User")
