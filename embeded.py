@@ -64,6 +64,7 @@ if __name__ == '__main__':
                 servo.ChangeDutyCycle(7)
                 time.sleep(0.5)
                 dist = distance()
+                print(dist)
                 if dist>6:
                     test = True
             servo.ChangeDutyCycle(2)
