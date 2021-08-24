@@ -59,10 +59,10 @@ if __name__ == '__main__':
                 print(text)
                 if id:
                     set = True
-            servo.ChangeDutyCycle(7)
-            time.sleep(0.5)
             test = False            
             while test==False:
+                servo.ChangeDutyCycle(7)
+                time.sleep(0.5)
                 dist = distance()
                 if dist>6:
                     test = True
